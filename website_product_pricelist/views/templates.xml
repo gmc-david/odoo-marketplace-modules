@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="pricelist_temp" active="False">
+        <div id="price_list_view" class="container m-0 w-100">Pricelist Table</div>
+    </template>
+
+    <template id="minimal_product" inherit_id="website_sale.product">
+        <xpath expr="//form//div[hasclass('js_main_product')]" position="inside">
+            <div id="price_list_table" class="container m-0 w-60">
+                <t t-if="is_view_active('website_product_pricelist.pricelist_temp')" t-call="website_product_pricelist.pricelist_temp"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>

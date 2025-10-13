@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Quantity Tiered Pricing Table</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #1f2937;
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 15px;
+        }
+        h2 {
+            color: #007bff;
+            font-size: 1.8em;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+        }
+        h3 {
+            color: #374151;
+            font-size: 1.4em;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        .subtitle {
+            font-size: 1.3em;
+            color: #6b7280;
+            margin-bottom: 2em;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .feature-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        .feature-box h4 {
+            color: #007bff;
+            margin-top: 0;
+        }
+        .screenshot {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 20px 0;
+            display: block;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .highlight-box {
+            background: #eff6ff;
+            border-left: 4px solid #007bff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .steps {
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+        .steps li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 20px;
+        }
+        .steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #007bff;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Website Quantity Tiered Pricing Table</h1>
+    <p class="subtitle">Transform how you display volume discounts with beautiful, dynamic pricing tables</p>
+
+    <img src="banner.png" class="screenshot" alt="Product page with tiered pricing table">
+
+    <h2>Why Choose This Module?</h2>
+    <p>If you offer quantity discounts or wholesale pricing, your customers need to see those savings upfront. This module automatically displays a professional pricing table on your product pages, making it crystal clear how much they can save by ordering more.</p>
+
+    <div class="highlight-box">
+        <strong>Perfect for:</strong> Wholesale businesses, B2B e-commerce, bulk retailers, manufacturers, and any store offering volume discounts
+    </div>
+
+    <h2>Key Features</h2>
+    <div class="feature-grid">
+        <div class="feature-box">
+            <h4>🎯 Automatic Display</h4>
+            <p>Pricing tables appear automatically based on your configured Odoo pricelists - no manual data entry required.</p>
+        </div>
+        <div class="feature-box">
+            <h4>⚡ Real-Time Updates</h4>
+            <p>When customers select different variants, the pricing table instantly updates to show relevant prices.</p>
+        </div>
+        <div class="feature-box">
+            <h4>📱 Fully Responsive</h4>
+            <p>Beautiful on desktop, tablet, and mobile. Your pricing tables look professional on every device.</p>
+        </div>
+        <div class="feature-box">
+            <h4>🎨 Clean Design</h4>
+            <p>Minimalist, professional styling that complements your store's design without overwhelming the page.</p>
+        </div>
+        <div class="feature-box">
+            <h4>💱 Multi-Currency</h4>
+            <p>Automatically displays prices in the customer's selected currency with proper formatting.</p>
+        </div>
+        <div class="feature-box">
+            <h4>🔧 Easy Control</h4>
+            <p>Enable or disable the pricing table directly from the Odoo website builder - no coding required.</p>
+        </div>
+    </div>
+
+    <img src="screenshot_table.png" class="screenshot" alt="Close-up view of pricing table with quantity tiers">
+
+    <h2>How It Works</h2>
+    <p>This module seamlessly integrates with Odoo's native pricelist functionality. Here's what happens behind the scenes:</p>
+
+    <ol>
+        <li>You configure your quantity-based pricelists in Odoo (just like normal)</li>
+        <li>The module automatically detects these pricelists for each product</li>
+        <li>A beautiful pricing table is displayed on the product page</li>
+        <li>When customers change variants, the table updates instantly via JavaScript</li>
+        <li>Customers can see exactly how much they'll save at different quantities</li>
+    </ol>
+
+    <div class="highlight-box">
+        <strong>💡 Pro Tip:</strong> Use this module to increase average order value by making bulk discounts visible and attractive to customers browsing your products.
+    </div>
+
+    <img src="screenshot_variants.png" class="screenshot" alt="Pricing table updating when product variant is selected">
+
+    <h2>Installation & Setup</h2>
+    <p>Getting started is incredibly simple:</p>
+
+    <ol class="steps">
+        <li>
+            <strong>Install the Module</strong><br>
+            Install "Website Quantity Tiered Pricing Table" from your Apps menu.
+        </li>
+        <li>
+            <strong>Configure Your Pricelists</strong><br>
+            Go to Sales → Configuration → Pricelists and set up your quantity-based pricing rules. The module works with your existing pricelist configuration.
+        </li>
+        <li>
+            <strong>Enable on Product Pages</strong><br>
+            Edit any product page using the website builder, and check the "Price List" option in the customize menu.
+        </li>
+        <li>
+            <strong>Done!</strong><br>
+            Your pricing table will now appear automatically on product pages with configured pricelists.
+        </li>
+    </ol>
+
+    <img src="screenshot_builder.png" class="screenshot" alt="Enabling price list in website builder">
+
+    <h2>Technical Details</h2>
+    <h3>Compatibility</h3>
+    <ul>
+        <li><strong>Odoo Version:</strong> 18.0</li>
+        <li><strong>Required Modules:</strong> website_sale (included in Odoo)</li>
+        <li><strong>Compatible with:</strong> Product variants, multiple currencies, all standard Odoo themes</li>
+    </ul>
+
+    <h3>What's Included</h3>
+    <ul>
+        <li>Python backend integration with product.template model</li>
+        <li>JavaScript for dynamic price table updates</li>
+        <li>Responsive CSS styling</li>
+        <li>Website builder snippet option</li>
+        <li>Template modifications for product pages</li>
+    </ul>
+
+    <img src="screenshot_mobile.png" class="screenshot" alt="Mobile responsive view of pricing table">
+
+    <h2>Use Cases</h2>
+    <h3>Wholesale & B2B</h3>
+    <p>Display wholesale pricing tiers so business customers can instantly see bulk discounts without requesting quotes.</p>
+
+    <h3>Retail with Volume Discounts</h3>
+    <p>Encourage larger purchases by showing customers exactly how much they save when buying in quantity.</p>
+
+    <h3>Manufacturing & Distribution</h3>
+    <p>Present complex pricing structures clearly, making it easier for distributors and resellers to understand your pricing.</p>
+
+    <h3>Subscription Products</h3>
+    <p>Show different pricing for various commitment levels or bulk subscription purchases.</p>
+
+    <h2>Benefits for Your Business</h2>
+    <ul>
+        <li><strong>Increase Average Order Value:</strong> Customers can see savings and are motivated to order more</li>
+        <li><strong>Reduce Sales Inquiries:</strong> Pricing is transparent, reducing "what's the price for X units?" questions</li>
+        <li><strong>Professional Presentation:</strong> Shows you're a serious business with clear, structured pricing</li>
+        <li><strong>Better User Experience:</strong> Customers don't need to calculate discounts or add items to cart to see bulk prices</li>
+        <li><strong>Competitive Advantage:</strong> Stand out from competitors who don't clearly display bulk pricing</li>
+    </ul>
+
+    <h2>Support & Updates</h2>
+    <p>We're committed to keeping this module updated and fully functional. If you encounter any issues or have feature requests, our support team is here to help.</p>
+
+    <div class="highlight-box">
+        <strong>📧 Support Email:</strong> hello@thegreatmerch.com<br>
+        <strong>Response Time:</strong> Within 24-48 hours on business days
+    </div>
+
+    <h3>What's Covered</h3>
+    <ul>
+        <li>Installation assistance</li>
+        <li>Configuration guidance</li>
+        <li>Bug fixes and compatibility updates</li>
+        <li>Minor customization advice</li>
+    </ul>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>Does this work with product variants?</h3>
+    <p>Yes! The module intelligently handles both product templates and individual variants. When a customer selects a variant, the pricing table updates to show that variant's specific pricing.</p>
+
+    <h3>Can I customize the styling?</h3>
+    <p>Absolutely. The module includes clean CSS that you can easily customize to match your brand. The styles are in a separate CSS file for easy modification.</p>
+
+    <h3>Will this slow down my website?</h3>
+    <p>No. The module is lightweight and only loads when needed. It uses efficient JavaScript and doesn't add any noticeable load time.</p>
+
+    <h3>What if I don't have pricelists configured?</h3>
+    <p>The pricing table simply won't appear. There's no error - it gracefully handles products without quantity-based pricing.</p>
+
+    <h3>Does it work with the Odoo website builder?</h3>
+    <p>Yes! You can enable/disable the pricing table directly from the website builder's customize menu - no technical knowledge required.</p>
+
+    <h2>Get Started Today</h2>
+    <p>Make your volume discounts visible and watch your average order value increase. This module pays for itself quickly by encouraging larger purchases and reducing the friction in your sales process.</p>
+
+    <div class="highlight-box">
+        <strong>One-time purchase:</strong> €49.99 (includes lifetime updates for Odoo 18.0)<br>
+        <strong>Installation:</strong> Less than 5 minutes<br>
+        <strong>Support:</strong> hello@thegreatmerch.com
+    </div>
+
+    <hr style="margin: 40px 0; border: none; border-top: 2px solid #e5e7eb;">
+
+    <p style="text-align: center; color: #6b7280; font-size: 0.9em;">
+        Developed by The Great Merch Developers<br>
+        Visit us at <a href="https://thegreatmerch.com" style="color: #007bff;">thegreatmerch.com</a>
+    </p>
+</body>
+</html>
