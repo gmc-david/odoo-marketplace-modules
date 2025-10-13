@@ -3,276 +3,770 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Quantity Tiered Pricing Table</title>
+    <title>Website Quantity Tiered Pricing Table - Odoo App</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0;
+        }
+
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            background: white;
         }
-        h1 {
-            color: #1f2937;
-            font-size: 2.5em;
-            margin-bottom: 0.5em;
-            border-bottom: 3px solid #007bff;
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero .subtitle {
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero .badges {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        /* Content Section */
+        .content {
+            padding: 60px 40px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            color: #1a202c;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            position: relative;
             padding-bottom: 15px;
         }
-        h2 {
-            color: #007bff;
-            font-size: 1.8em;
-            margin-top: 1.5em;
-            margin-bottom: 0.8em;
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
         }
+
         h3 {
-            color: #374151;
-            font-size: 1.4em;
-            margin-top: 1.5em;
-            margin-bottom: 0.5em;
+            color: #2d3748;
+            font-size: 1.6em;
+            margin-top: 30px;
+            margin-bottom: 15px;
         }
-        .subtitle {
-            font-size: 1.3em;
-            color: #6b7280;
-            margin-bottom: 2em;
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #4a5568;
         }
+
+        /* Feature Grid */
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
         }
-        .feature-box {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #007bff;
+
+        .feature-card {
+            background: #f7fafc;
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .feature-box h4 {
-            color: #007bff;
-            margin-top: 0;
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
         }
-        .screenshot {
-            max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin: 20px 0;
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .feature-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
             display: block;
         }
-        ul {
-            padding-left: 20px;
+
+        .feature-card h4 {
+            color: #1a202c;
+            font-size: 1.3em;
+            margin-bottom: 12px;
+            font-weight: 600;
         }
-        li {
-            margin-bottom: 8px;
+
+        .feature-card p {
+            font-size: 1em;
+            color: #718096;
+            margin: 0;
         }
+
+        /* Screenshot Sections - Adjusted for your images */
+        
+        /* Full width desktop screenshot (Image 1) */
+        .screenshot-full {
+            background: #f7fafc;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .screenshot-full img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Builder screenshot with sidebar (Image 2) */
+        .screenshot-builder {
+            background: #f7fafc;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .screenshot-builder img {
+            max-width: 100%;
+            width: 90%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Mobile screenshot (Image 3) - Portrait */
+        .screenshot-mobile {
+            background: #f7fafc;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .screenshot-mobile img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Table close-up screenshots (Images 4 & 5) */
+        .screenshot-table {
+            background: #f7fafc;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .screenshot-table img {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Two column layout for variant examples */
+        .screenshot-dual {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .screenshot-dual-item {
+            background: #f7fafc;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .screenshot-dual-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .screenshot-caption {
+            font-size: 1em;
+            color: #718096;
+            font-style: italic;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        /* Highlight Box */
         .highlight-box {
-            background: #eff6ff;
-            border-left: 4px solid #007bff;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 4px;
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+            border-left: 5px solid #667eea;
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 8px;
         }
-        .steps {
-            counter-reset: step-counter;
+
+        .highlight-box strong {
+            color: #667eea;
+            font-size: 1.1em;
+        }
+
+        /* List Styling */
+        ul {
             list-style: none;
-            padding-left: 0;
+            padding: 0;
         }
-        .steps li {
-            counter-increment: step-counter;
+
+        ul li {
+            padding: 12px 0 12px 35px;
             position: relative;
-            padding-left: 50px;
-            margin-bottom: 20px;
+            font-size: 1.05em;
+            color: #4a5568;
         }
-        .steps li::before {
-            content: counter(step-counter);
+
+        ul li::before {
+            content: "✓";
             position: absolute;
             left: 0;
-            top: 0;
-            background: #007bff;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        /* Steps */
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            padding: 0;
+        }
+
+        .steps li {
+            counter-increment: step;
+            position: relative;
+            padding: 20px 20px 20px 80px;
+            margin-bottom: 25px;
+            background: #f7fafc;
+            border-radius: 8px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            width: 35px;
-            height: 35px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            font-size: 1.3em;
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .steps li strong {
+            display: block;
+            color: #1a202c;
+            font-size: 1.15em;
+            margin-bottom: 8px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 12px;
+            margin: 60px 0;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta-section h2::after {
+            background: rgba(255,255,255,0.3);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .price-tag {
+            font-size: 3em;
+            font-weight: 700;
+            margin: 30px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .price-details {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        /* Support Section */
+        .support-section {
+            background: #f7fafc;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 40px 0;
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+        }
+
+        .faq-item h4 {
+            color: #1a202c;
+            font-size: 1.2em;
+            margin-bottom: 12px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a202c;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .screenshot-dual {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 40px 20px;
+            }
+
+            .steps li {
+                padding: 20px 20px 20px 65px;
+            }
+
+            .steps li::before {
+                width: 35px;
+                height: 35px;
+                font-size: 1.1em;
+            }
+
+            .screenshot-builder img,
+            .screenshot-mobile img {
+                width: 100%;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Website Quantity Tiered Pricing Table</h1>
-    <p class="subtitle">Transform how you display volume discounts with beautiful, dynamic pricing tables</p>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>📊 Website Quantity Tiered Pricing Table</h1>
+            <p class="subtitle">Transform how you display volume discounts with beautiful, dynamic pricing tables</p>
+            <div class="badges">
+                <span class="badge">Odoo 18.0</span>
+                <span class="badge">Website</span>
+                <span class="badge">eCommerce</span>
+                <span class="badge">Sales</span>
+                <span class="badge">B2B Ready</span>
+            </div>
+        </div>
 
-    <img src="banner.png" class="screenshot" alt="Product page with tiered pricing table">
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Image 1: Full Desktop View -->
+            <div class="screenshot-full">
+                <img src="screenshot_1.png" alt="Complete product page with tiered pricing table">
+                <p class="screenshot-caption">Professional pricing tables integrated seamlessly into your product pages</p>
+            </div>
 
-    <h2>Why Choose This Module?</h2>
-    <p>If you offer quantity discounts or wholesale pricing, your customers need to see those savings upfront. This module automatically displays a professional pricing table on your product pages, making it crystal clear how much they can save by ordering more.</p>
+            <!-- Value Proposition -->
+            <div class="section">
+                <h2>Why Your Store Needs This</h2>
+                <p>If you offer quantity discounts or wholesale pricing, your customers need to see those savings upfront. This module automatically displays a professional pricing table on your product pages, making it crystal clear how much they can save by ordering more.</p>
+                
+                <div class="highlight-box">
+                    <strong>Perfect for:</strong> Wholesale businesses, B2B e-commerce, bulk retailers, manufacturers, promotional product suppliers, and any store offering volume discounts
+                </div>
+            </div>
 
-    <div class="highlight-box">
-        <strong>Perfect for:</strong> Wholesale businesses, B2B e-commerce, bulk retailers, manufacturers, and any store offering volume discounts
+            <!-- Features -->
+            <div class="section">
+                <h2>✨ Powerful Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">🎯</span>
+                        <h4>Automatic Display</h4>
+                        <p>Pricing tables appear automatically based on your configured Odoo pricelists - no manual data entry required.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">⚡</span>
+                        <h4>Real-Time Updates</h4>
+                        <p>When customers select different variants, the pricing table instantly updates to show relevant prices.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📱</span>
+                        <h4>Fully Responsive</h4>
+                        <p>Beautiful on desktop, tablet, and mobile. Your pricing tables look professional on every device.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🎨</span>
+                        <h4>Theme Integration</h4>
+                        <p>Automatically adapts to your website's colors and styling for a seamless brand experience.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">💱</span>
+                        <h4>Multi-Currency</h4>
+                        <p>Automatically displays prices in the customer's selected currency with proper formatting.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🔧</span>
+                        <h4>Easy Control</h4>
+                        <p>Enable or disable the pricing table directly from the Odoo website builder - no coding required.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 2: Website Builder Toggle -->
+            <div class="section">
+                <h2>⚙️ Simple to Enable</h2>
+                <p>Toggle the pricing table on or off directly from the Odoo website builder - no technical knowledge needed.</p>
+                <div class="screenshot-builder">
+                    <img src="screenshot_2.png" alt="Website builder showing Price List toggle option">
+                    <p class="screenshot-caption">Simple toggle in the website builder customize menu</p>
+                </div>
+            </div>
+
+            <!-- How It Works -->
+            <div class="section">
+                <h2>How It Works</h2>
+                <p>This module seamlessly integrates with Odoo's native pricelist functionality:</p>
+                
+                <ol class="steps">
+                    <li>
+                        <strong>Configure Your Pricelists</strong>
+                        Set up your quantity-based pricelists in Odoo (just like normal)
+                    </li>
+                    <li>
+                        <strong>Automatic Detection</strong>
+                        The module automatically detects these pricelists for each product
+                    </li>
+                    <li>
+                        <strong>Beautiful Display</strong>
+                        A professional pricing table appears on the product page
+                    </li>
+                    <li>
+                        <strong>Dynamic Updates</strong>
+                        When customers change variants, the table updates instantly
+                    </li>
+                    <li>
+                        <strong>Increased Sales</strong>
+                        Customers see exactly how much they'll save at different quantities
+                    </li>
+                </ol>
+
+                <div class="highlight-box">
+                    <strong>💡 Pro Tip:</strong> Use this module to increase average order value by making bulk discounts visible and attractive to customers browsing your products.
+                </div>
+            </div>
+
+            <!-- Image 3: Mobile View & Images 4/5: Table Examples -->
+            <div class="section">
+                <h2>📸 Works Perfectly on All Devices</h2>
+                
+                <!-- Mobile Screenshot -->
+                <div class="screenshot-mobile">
+                    <img src="screenshot_3.png" alt="Mobile view of pricing table">
+                    <p class="screenshot-caption">Fully responsive design - perfect on smartphones and tablets</p>
+                </div>
+
+                <!-- Table Close-ups in dual layout -->
+                <div class="screenshot-dual">
+                    <div class="screenshot-dual-item">
+                        <img src="screenshot_4.png" alt="Pricing table close-up view">
+                        <p class="screenshot-caption">Clean, professional table design</p>
+                    </div>
+                    <div class="screenshot-dual-item">
+                        <img src="screenshot_5.png" alt="Pricing table with quantity selector">
+                        <p class="screenshot-caption">Real-time price updates as quantity changes</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Installation -->
+            <div class="section">
+                <h2>⚙️ Quick & Easy Installation</h2>
+                <p>Get up and running in less than 5 minutes:</p>
+                
+                <ol class="steps">
+                    <li>
+                        <strong>Install the Module</strong>
+                        Install from your Odoo Apps menu - one click installation
+                    </li>
+                    <li>
+                        <strong>Configure Pricelists</strong>
+                        Set up your quantity-based pricing rules in Sales → Configuration → Pricelists
+                    </li>
+                    <li>
+                        <strong>Enable on Products</strong>
+                        Edit any product page and check the "Price List" option in the website builder
+                    </li>
+                    <li>
+                        <strong>Done!</strong>
+                        Your pricing tables will appear automatically on configured products
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Benefits -->
+            <div class="section">
+                <h2>🚀 Benefits for Your Business</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">📈</span>
+                        <h4>Increase Order Value</h4>
+                        <p>Customers see savings and are motivated to order more, boosting your average order size.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">⏱️</span>
+                        <h4>Save Time</h4>
+                        <p>Reduce "what's the price for X units?" inquiries with transparent pricing.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🎯</span>
+                        <h4>Professional Image</h4>
+                        <p>Show you're a serious business with clear, structured pricing presentation.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">😊</span>
+                        <h4>Better UX</h4>
+                        <p>Customers don't need to calculate or add items to cart to see bulk prices.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Use Cases -->
+            <div class="section">
+                <h2>🎯 Perfect Use Cases</h2>
+                <ul>
+                    <li><strong>Wholesale & B2B:</strong> Display wholesale pricing tiers so business customers can instantly see bulk discounts</li>
+                    <li><strong>Retail with Volume Discounts:</strong> Encourage larger purchases by showing exactly how much customers save</li>
+                    <li><strong>Manufacturing & Distribution:</strong> Present complex pricing structures clearly for distributors and resellers</li>
+                    <li><strong>Promotional Products:</strong> Show tiered pricing for custom merchandise at different quantities</li>
+                    <li><strong>Print Services:</strong> Display pricing for different print run sizes</li>
+                    <li><strong>Subscription Products:</strong> Show different pricing for various commitment levels</li>
+                </ul>
+            </div>
+
+            <!-- FAQ -->
+            <div class="section">
+                <h2>❓ Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <h4>Does this work with product variants?</h4>
+                    <p>Yes! The module intelligently handles both product templates and individual variants. When a customer selects a variant, the pricing table updates to show that variant's specific pricing.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Can I customize the styling?</h4>
+                    <p>Absolutely. The module includes clean CSS that you can easily customize to match your brand. The styles are in a separate CSS file for easy modification, and it automatically adapts to your website's theme colors.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Will this slow down my website?</h4>
+                    <p>No. The module is lightweight and only loads when needed. It uses efficient JavaScript and doesn't add any noticeable load time to your pages.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>What if I don't have pricelists configured?</h4>
+                    <p>The pricing table simply won't appear. There's no error - it gracefully handles products without quantity-based pricing.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Does it work with multiple currencies?</h4>
+                    <p>Yes! The module automatically displays prices in the customer's selected currency with proper symbol positioning (before or after the amount).</p>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h2>Get Started Today</h2>
+                <p>Make your volume discounts visible and watch your average order value increase</p>
+                <div class="price-tag">€49.99</div>
+                <div class="price-details">
+                    ✓ One-time purchase<br>
+                    ✓ Lifetime updates for Odoo 18.0<br>
+                    ✓ Installation in under 5 minutes<br>
+                    ✓ Email support included
+                </div>
+            </div>
+
+            <!-- Support -->
+            <div class="support-section">
+                <h2>📧 Support & Updates</h2>
+                <p>We're committed to keeping this module updated and fully functional. If you encounter any issues or have feature requests, our support team is here to help.</p>
+                
+                <div style="margin-top: 30px;">
+                    <p><strong>📧 Support Email:</strong> hello@thegreatmerch.com</p>
+                    <p><strong>⏱️ Response Time:</strong> Within 24-48 hours on business days</p>
+                    <p><strong>🌐 Website:</strong> <a href="https://thegreatmerch.com" style="color: #667eea;">thegreatmerch.com</a></p>
+                </div>
+
+                <h3 style="margin-top: 30px;">What's Covered:</h3>
+                <ul>
+                    <li>Installation assistance</li>
+                    <li>Configuration guidance</li>
+                    <li>Bug fixes and compatibility updates</li>
+                    <li>Minor customization advice</li>
+                </ul>
+            </div>
+
+            <!-- Technical Details -->
+            <div class="section">
+                <h2>🔧 Technical Details</h2>
+                <h3>Compatibility</h3>
+                <ul>
+                    <li><strong>Odoo Version:</strong> 18.0</li>
+                    <li><strong>Required Modules:</strong> website_sale (included in Odoo)</li>
+                    <li><strong>Compatible with:</strong> Product variants, multiple currencies, all standard Odoo themes</li>
+                </ul>
+
+                <h3>What's Included</h3>
+                <ul>
+                    <li>Python backend integration with product.template model</li>
+                    <li>JavaScript for dynamic price table updates</li>
+                    <li>Responsive CSS styling with theme variable support</li>
+                    <li>Website builder snippet option</li>
+                    <li>Template modifications for product pages</li>
+                    <li>Complete documentation (README.rst)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>Developed by The Great Merch Developers</strong></p>
+            <p>Visit us at <a href="https://thegreatmerch.com">thegreatmerch.com</a></p>
+            <p style="margin-top: 20px; opacity: 0.7;">© 2025 The Great Merch. Licensed under LGPL-3.</p>
+        </div>
     </div>
-
-    <h2>Key Features</h2>
-    <div class="feature-grid">
-        <div class="feature-box">
-            <h4>🎯 Automatic Display</h4>
-            <p>Pricing tables appear automatically based on your configured Odoo pricelists - no manual data entry required.</p>
-        </div>
-        <div class="feature-box">
-            <h4>⚡ Real-Time Updates</h4>
-            <p>When customers select different variants, the pricing table instantly updates to show relevant prices.</p>
-        </div>
-        <div class="feature-box">
-            <h4>📱 Fully Responsive</h4>
-            <p>Beautiful on desktop, tablet, and mobile. Your pricing tables look professional on every device.</p>
-        </div>
-        <div class="feature-box">
-            <h4>🎨 Clean Design</h4>
-            <p>Minimalist, professional styling that complements your store's design without overwhelming the page.</p>
-        </div>
-        <div class="feature-box">
-            <h4>💱 Multi-Currency</h4>
-            <p>Automatically displays prices in the customer's selected currency with proper formatting.</p>
-        </div>
-        <div class="feature-box">
-            <h4>🔧 Easy Control</h4>
-            <p>Enable or disable the pricing table directly from the Odoo website builder - no coding required.</p>
-        </div>
-    </div>
-
-    <img src="screenshot_table.png" class="screenshot" alt="Close-up view of pricing table with quantity tiers">
-
-    <h2>How It Works</h2>
-    <p>This module seamlessly integrates with Odoo's native pricelist functionality. Here's what happens behind the scenes:</p>
-
-    <ol>
-        <li>You configure your quantity-based pricelists in Odoo (just like normal)</li>
-        <li>The module automatically detects these pricelists for each product</li>
-        <li>A beautiful pricing table is displayed on the product page</li>
-        <li>When customers change variants, the table updates instantly via JavaScript</li>
-        <li>Customers can see exactly how much they'll save at different quantities</li>
-    </ol>
-
-    <div class="highlight-box">
-        <strong>💡 Pro Tip:</strong> Use this module to increase average order value by making bulk discounts visible and attractive to customers browsing your products.
-    </div>
-
-    <img src="screenshot_variants.png" class="screenshot" alt="Pricing table updating when product variant is selected">
-
-    <h2>Installation & Setup</h2>
-    <p>Getting started is incredibly simple:</p>
-
-    <ol class="steps">
-        <li>
-            <strong>Install the Module</strong><br>
-            Install "Website Quantity Tiered Pricing Table" from your Apps menu.
-        </li>
-        <li>
-            <strong>Configure Your Pricelists</strong><br>
-            Go to Sales → Configuration → Pricelists and set up your quantity-based pricing rules. The module works with your existing pricelist configuration.
-        </li>
-        <li>
-            <strong>Enable on Product Pages</strong><br>
-            Edit any product page using the website builder, and check the "Price List" option in the customize menu.
-        </li>
-        <li>
-            <strong>Done!</strong><br>
-            Your pricing table will now appear automatically on product pages with configured pricelists.
-        </li>
-    </ol>
-
-    <img src="screenshot_builder.png" class="screenshot" alt="Enabling price list in website builder">
-
-    <h2>Technical Details</h2>
-    <h3>Compatibility</h3>
-    <ul>
-        <li><strong>Odoo Version:</strong> 18.0</li>
-        <li><strong>Required Modules:</strong> website_sale (included in Odoo)</li>
-        <li><strong>Compatible with:</strong> Product variants, multiple currencies, all standard Odoo themes</li>
-    </ul>
-
-    <h3>What's Included</h3>
-    <ul>
-        <li>Python backend integration with product.template model</li>
-        <li>JavaScript for dynamic price table updates</li>
-        <li>Responsive CSS styling</li>
-        <li>Website builder snippet option</li>
-        <li>Template modifications for product pages</li>
-    </ul>
-
-    <img src="screenshot_mobile.png" class="screenshot" alt="Mobile responsive view of pricing table">
-
-    <h2>Use Cases</h2>
-    <h3>Wholesale & B2B</h3>
-    <p>Display wholesale pricing tiers so business customers can instantly see bulk discounts without requesting quotes.</p>
-
-    <h3>Retail with Volume Discounts</h3>
-    <p>Encourage larger purchases by showing customers exactly how much they save when buying in quantity.</p>
-
-    <h3>Manufacturing & Distribution</h3>
-    <p>Present complex pricing structures clearly, making it easier for distributors and resellers to understand your pricing.</p>
-
-    <h3>Subscription Products</h3>
-    <p>Show different pricing for various commitment levels or bulk subscription purchases.</p>
-
-    <h2>Benefits for Your Business</h2>
-    <ul>
-        <li><strong>Increase Average Order Value:</strong> Customers can see savings and are motivated to order more</li>
-        <li><strong>Reduce Sales Inquiries:</strong> Pricing is transparent, reducing "what's the price for X units?" questions</li>
-        <li><strong>Professional Presentation:</strong> Shows you're a serious business with clear, structured pricing</li>
-        <li><strong>Better User Experience:</strong> Customers don't need to calculate discounts or add items to cart to see bulk prices</li>
-        <li><strong>Competitive Advantage:</strong> Stand out from competitors who don't clearly display bulk pricing</li>
-    </ul>
-
-    <h2>Support & Updates</h2>
-    <p>We're committed to keeping this module updated and fully functional. If you encounter any issues or have feature requests, our support team is here to help.</p>
-
-    <div class="highlight-box">
-        <strong>📧 Support Email:</strong> hello@thegreatmerch.com<br>
-        <strong>Response Time:</strong> Within 24-48 hours on business days
-    </div>
-
-    <h3>What's Covered</h3>
-    <ul>
-        <li>Installation assistance</li>
-        <li>Configuration guidance</li>
-        <li>Bug fixes and compatibility updates</li>
-        <li>Minor customization advice</li>
-    </ul>
-
-    <h2>Frequently Asked Questions</h2>
-
-    <h3>Does this work with product variants?</h3>
-    <p>Yes! The module intelligently handles both product templates and individual variants. When a customer selects a variant, the pricing table updates to show that variant's specific pricing.</p>
-
-    <h3>Can I customize the styling?</h3>
-    <p>Absolutely. The module includes clean CSS that you can easily customize to match your brand. The styles are in a separate CSS file for easy modification.</p>
-
-    <h3>Will this slow down my website?</h3>
-    <p>No. The module is lightweight and only loads when needed. It uses efficient JavaScript and doesn't add any noticeable load time.</p>
-
-    <h3>What if I don't have pricelists configured?</h3>
-    <p>The pricing table simply won't appear. There's no error - it gracefully handles products without quantity-based pricing.</p>
-
-    <h3>Does it work with the Odoo website builder?</h3>
-    <p>Yes! You can enable/disable the pricing table directly from the website builder's customize menu - no technical knowledge required.</p>
-
-    <h2>Get Started Today</h2>
-    <p>Make your volume discounts visible and watch your average order value increase. This module pays for itself quickly by encouraging larger purchases and reducing the friction in your sales process.</p>
-
-    <div class="highlight-box">
-        <strong>One-time purchase:</strong> €49.99 (includes lifetime updates for Odoo 18.0)<br>
-        <strong>Installation:</strong> Less than 5 minutes<br>
-        <strong>Support:</strong> hello@thegreatmerch.com
-    </div>
-
-    <hr style="margin: 40px 0; border: none; border-top: 2px solid #e5e7eb;">
-
-    <p style="text-align: center; color: #6b7280; font-size: 0.9em;">
-        Developed by The Great Merch Developers<br>
-        Visit us at <a href="https://thegreatmerch.com" style="color: #007bff;">thegreatmerch.com</a>
-    </p>
 </body>
 </html>
