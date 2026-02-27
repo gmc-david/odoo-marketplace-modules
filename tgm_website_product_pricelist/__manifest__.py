@@ -41,8 +41,8 @@ Perfect for B2B stores, wholesale operations, or any business offering volume di
     ],
     "assets": {
         "web.assets_frontend": [
-            'website_product_pricelist/static/src/css/pricelist_styles.css',
-            'website_product_pricelist/static/src/js/**'
+            'tgm_website_product_pricelist/static/src/css/pricelist_styles.css',
+            'tgm_website_product_pricelist/static/src/js/**'
         ]
     },
     "application": False,
