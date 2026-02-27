@@ -3,7 +3,7 @@
     <template id="snippet_options" inherit_id="website_sale.snippet_options">
         <xpath expr="//we-checkbox[@data-name='o_wsale_accordion_item']" position="before">
             <we-checkbox string="Price List" 
-                data-customize-website-views="website_product_pricelist.pricelist_temp" 
+                data-customize-website-views="tgm_website_product_pricelist.pricelist_temp" 
                 data-name="o_wsale_pricelist_view"
                 data-no-preview="true"
                 data-reload="/"/>
