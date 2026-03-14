@@ -22,7 +22,7 @@ Key Features:
 
 Perfect for B2B stores, wholesale operations, or any business offering volume discounts.
     """,
-    "version": "18.0.1.0.0",
+    "version": "18.0.1.0.1",
     "category": "Website/Website",
     "depends": ['website_sale'],
     "author": "The Great Merch Developers",
