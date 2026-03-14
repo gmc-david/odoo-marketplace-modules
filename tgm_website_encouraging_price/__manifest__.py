@@ -28,8 +28,8 @@ Perfect for B2B stores, wholesale operations, or any business offering volume di
     "author": "The Great Merch Developers",
     "website": "https://thegreatmerch.com",
     "support": "hello@thegreatmerch.com",
-    "price": 19.99,
-    "currency": "GBP",
+    "price": 23.99,
+    "currency": "EUR",
     "license": "LGPL-3",
     "images": [
         "static/description/banner.png",
