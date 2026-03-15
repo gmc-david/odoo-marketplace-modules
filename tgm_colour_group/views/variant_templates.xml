@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="colour_group_variants" inherit_id="website_sale.variants">
+        <xpath expr="//strong[hasclass('attribute_name')]" position="attributes">
+            <attribute
+                name="t-attf-class">#{'d-none' if ptal.attribute_id.id == env.ref('tgm_colour_group.colour_group').id else 'attribute_name'}</attribute>
+        </xpath>
+
+        <xpath expr="//t[@t-elif=&quot;attribute.display_type == 'color'&quot;]/ul" position="attributes">
+            <attribute
+                name="t-attf-class">list-inline o_wsale_product_attribute #{'d-none' if single_and_custom else ''} #{'d-none' if ptal.attribute_id.id == env.ref('tgm_colour_group.colour_group').id else ''}</attribute>
+        </xpath>
+    </template>
+</odoo>

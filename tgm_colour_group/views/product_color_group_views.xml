@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Colour Group Form View -->
+    <record id="product_color_group_view_form" model="ir.ui.view">
+        <field name="name">product.color.group.view.form</field>
+        <field name="model">product.color.group</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            name="auto_assign_products"
+                            type="object"
+                            string="Auto-Assign Products"
+                            class="oe_stat_button"
+                            icon="fa-magic"/>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="e.g. Blues"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Settings">
+                            <field name="color_code" widget="color"/>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                            <field name="value_id"/>
+                            <field name="attribute_id" invisible="1"/>
+                        </group>
+                        <group string="Auto-Assignment">
+                            <field
+                                name="color_terms"
+                                placeholder="navy, french navy, dark navy, midnight blue..."/>
+                        </group>
+                    </group>
+                    <group string="Batch Processing" invisible="not value_id">
+                        <group>
+                            <field name="batch_size"/>
+                            <field name="total_batches"/>
+                            <field name="current_batch"/>
+                            <button
+                                name="action_update_product_attribute"
+                                type="object"
+                                string="Assign Attribute (Next Batch)"
+                                class="btn-primary"
+                                icon="fa-play"/>
+                        </group>
+                        <group>
+                            <field name="current_remove_batch"/>
+                            <button
+                                name="action_remove_product"
+                                type="object"
+                                string="Remove Products (Next Batch)"
+                                class="btn-warning"
+                                icon="fa-trash"/>
+                            <button
+                                name="refresh_batch_data"
+                                type="object"
+                                string="Reset Batch Counters"
+                                icon="fa-refresh"
+                                confirm="This will reset all batch counters to zero. Continue?"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Products" name="products">
+                            <div class="mb-2">
+                                <span class="badge bg-success me-2">
+                                    Published: <field name="published_count" class="d-inline"/>
+                                </span>
+                                <span class="badge bg-secondary">
+                                    Unpublished: <field name="unpublished_count" class="d-inline"/>
+                                </span>
+                            </div>
+                            <field name="product_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Colour Group List View -->
+    <record id="product_color_group_view_list" model="ir.ui.view">
+        <field name="name">product.color.group.view.tree</field>
+        <field name="model">product.color.group</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="color_code" widget="color"/>
+                <field name="product_count" string="Products"/>
+                <field name="published_count" string="Published"/>
+                <field name="unpublished_count" string="Unpublished"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Colour Group Search View -->
+    <record id="product_color_group_view_search" model="ir.ui.view">
+        <field name="name">product.color.group.view.search</field>
+        <field name="model">product.color.group</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="color_terms"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Colour Group Action -->
+    <record id="product_color_group_action" model="ir.actions.act_window">
+        <field name="name">Colour Groups</field>
+        <field name="res_model">product.color.group</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Colour Group Menu -->
+    <menuitem
+        id="menu_product_color_group"
+        name="Colour Groups"
+        parent="website_sale.menu_catalog"
+        action="product_color_group_action"
+        sequence="20"/>
+</odoo>

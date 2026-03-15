@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+
+    <!-- =================================================================
+         Attribute Values (linked to the Colour Group attribute)
+         ================================================================= -->
+
+    <record id="attr_val_blacks" model="product.attribute.value">
+        <field name="name">Blacks</field>
+        <field name="attribute_id" ref="tgm_colour_group.colour_group"/>
+        <field name="html_color">#1a1a1a</field>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="attr_val_whites" model="product.attribute.value">
+        <field name="name">Whites</field>
+        <field name="attribute_id" ref="tgm_colour_group.colour_group"/>
+        <field name="html_color">#f5f5f0</field>
+        <field name="sequence">2</field>
+    </record>
+
+    <record id="attr_val_greys" model="product.attribute.value">
+        <field name="name">Greys</field>
+        <field name="attribute_id" ref="tgm_colour_group.colour_group"/>
+        <field name="html_color">#9e9e9e</field>
+        <field name="sequence">3</field>
+    </record>
+
+    <record id="attr_val_blues" model="product.attribute.value">
+        <field name="name">Blues</field>
+        <field name="attribute_id" ref="tgm_colour_group.colour_group"/>
+        <field name="html_color">#1565c0</field>
+        <field name="sequence">4</field>
+    </record>
+
+    <record id="attr_val_reds" model="product.attribute.value">
+        <field name="name">Reds</field>
+        <field name="attribute_id" ref="tgm_colour_group.colour_group"/>
+        <field name="html_color">#c62828</field>
+        <field name="sequence">5</field>
+    </record>
+
+    <record id="attr_val_greens" model="product.attribute.value">
+        <field name="name">Greens</field>
+        <field name="attribute_id" ref="tgm_colour_group.colour_group"/>
+        <field name="html_color">#2e7d32</field>
+        <field name="sequence">6</field>
+    </record>
+
+    <record id="attr_val_yellows" model="product.attribute.value">
+        <field name="name">Yellows</field>
+        <field name="attribute_id" ref="tgm_colour_group.colour_group"/>
+        <field name="html_color">#f9a825</field>
+        <field name="sequence">7</field>
+    </record>
+
+    <record id="attr_val_oranges" model="product.attribute.value">
+        <field name="name">Oranges</field>
+        <field name="attribute_id" ref="tgm_colour_group.colour_group"/>
+        <field name="html_color">#e65100</field>
+        <field name="sequence">8</field>
+    </record>
+
+    <record id="attr_val_pinks" model="product.attribute.value">
+        <field name="name">Pinks</field>
+        <field name="attribute_id" ref="tgm_colour_group.colour_group"/>
+        <field name="html_color">#e91e90</field>
+        <field name="sequence">9</field>
+    </record>
+
+    <record id="attr_val_purples" model="product.attribute.value">
+        <field name="name">Purples</field>
+        <field name="attribute_id" ref="tgm_colour_group.colour_group"/>
+        <field name="html_color">#7b1fa2</field>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="attr_val_browns" model="product.attribute.value">
+        <field name="name">Browns</field>
+        <field name="attribute_id" ref="tgm_colour_group.colour_group"/>
+        <field name="html_color">#6d4c41</field>
+        <field name="sequence">11</field>
+    </record>
+
+    <record id="attr_val_multi" model="product.attribute.value">
+        <field name="name">Multi-Colour</field>
+        <field name="attribute_id" ref="tgm_colour_group.colour_group"/>
+        <field name="html_color">#ff6f00</field>
+        <field name="sequence">12</field>
+    </record>
+
+    <!-- =================================================================
+         Pre-configured Colour Groups
+         ================================================================= -->
+
+    <record id="group_blacks" model="product.color.group">
+        <field name="name">Blacks</field>
+        <field name="color_code">#1a1a1a</field>
+        <field name="sequence">1</field>
+        <field name="value_id" ref="attr_val_blacks"/>
+        <field name="color_terms">black, jet black, onyx, ebony, charcoal black, raven, ink black, pitch black, nero, noir, anthracite, coal, carbon, blackout, dark black, deep black, true black, rich black, soot, obsidian, midnight black, matte black, glossy black, flat black, off black, soft black, washed black, vintage black, faded black</field>
+    </record>
+
+    <record id="group_whites" model="product.color.group">
+        <field name="name">Whites</field>
+        <field name="color_code">#f5f5f0</field>
+        <field name="sequence">2</field>
+        <field name="value_id" ref="attr_val_whites"/>
+        <field name="color_terms">white, off white, off-white, bright white, snow white, pure white, arctic white, winter white, ivory, cream, pearl, natural, ecru, eggshell, bone, chalk, linen, vanilla, alabaster, porcelain, milk, opal, oyster, coconut, frost white, cloud white, antique white</field>
+    </record>
+
+    <record id="group_greys" model="product.color.group">
+        <field name="name">Greys</field>
+        <field name="color_code">#9e9e9e</field>
+        <field name="sequence">3</field>
+        <field name="value_id" ref="attr_val_greys"/>
+        <field name="color_terms">grey, gray, light grey, light gray, dark grey, dark gray, charcoal, heather grey, heather gray, ash grey, ash gray, silver grey, silver gray, slate grey, slate gray, graphite, gunmetal, pewter, platinum, steel grey, steel gray, smoke, silver, marl grey, marl gray, mid grey, mid gray, cement, fog, stone grey, storm grey, iron grey, dove grey, pigeon grey, mouse grey, lead, zinc, chrome</field>
+    </record>
+
+    <record id="group_blues" model="product.color.group">
+        <field name="name">Blues</field>
+        <field name="color_code">#1565c0</field>
+        <field name="sequence">4</field>
+        <field name="value_id" ref="attr_val_blues"/>
+        <field name="color_terms">blue, navy, french navy, dark navy, midnight blue, royal blue, sky blue, baby blue, cobalt blue, ocean blue, steel blue, powder blue, cornflower blue, slate blue, teal blue, electric blue, sapphire, petrol blue, airforce blue, air force blue, oxford blue, cambridge blue, carolina blue, azure, cerulean, denim, indigo blue, ice blue, marine blue, pacific blue, nautical blue, cadet blue, periwinkle, aegean, baltic blue, harbor blue, lake blue, deep blue, vintage blue, dusty blue, storm blue, twilight blue, lagoon, aqua blue, bright blue, light blue, dark blue, medium blue, true blue, classic blue, sea blue, harbour blue, colonial blue, ink blue, bluebell, cornflower, peacock blue, duck egg blue, tiffany blue, wedgwood blue, horizon blue, prussian blue, delft blue</field>
+    </record>
+
+    <record id="group_reds" model="product.color.group">
+        <field name="name">Reds</field>
+        <field name="color_code">#c62828</field>
+        <field name="sequence">5</field>
+        <field name="value_id" ref="attr_val_reds"/>
+        <field name="color_terms">red, bright red, cherry red, crimson, scarlet, burgundy, maroon, wine red, ruby, cardinal red, fire red, pillar box red, vermillion, rust red, poppy red, classic red, fire engine red, brick red, blood red, tomato red, cranberry, garnet, carmine, raspberry red, chilli red, chili red, candy apple red, racing red, signal red, ferrari red, chinese red, true red, deep red, dark red, berry red, cherry, claret, oxblood, merlot, rosso, rouge, flame red, currant red, postbox red, venetian red, barn red, lipstick red</field>
+    </record>
+
+    <record id="group_greens" model="product.color.group">
+        <field name="name">Greens</field>
+        <field name="color_code">#2e7d32</field>
+        <field name="sequence">6</field>
+        <field name="value_id" ref="attr_val_greens"/>
+        <field name="color_terms">green, forest green, bottle green, emerald green, lime green, sage green, olive green, kelly green, moss green, racing green, apple green, leaf green, hunter green, military green, jade, mint green, army green, khaki green, pine green, fern green, ivy green, grass green, neon green, bright green, dark green, light green, spring green, seafoam green, pistachio, teal green, eucalyptus, jungle green, avocado, basil, celtic green, evergreen, shamrock, clover, pea green, chartreuse, viridian, malachite, lincoln green, british racing green, olive drab, sea green, meadow green, pickle green, spruce, willow green, spearmint</field>
+    </record>
+
+    <record id="group_yellows" model="product.color.group">
+        <field name="name">Yellows</field>
+        <field name="color_code">#f9a825</field>
+        <field name="sequence">7</field>
+        <field name="value_id" ref="attr_val_yellows"/>
+        <field name="color_terms">yellow, bright yellow, sunflower, gold, golden yellow, mustard, amber, lemon, canary, buttercup, saffron, maize, primrose, banana, honey, daffodil, golden, flaxen, corn yellow, sunshine, neon yellow, fluorescent yellow, hi-vis yellow, high visibility yellow, daisy, dandelion, bumblebee, ochre, straw, wheat, champagne gold, citrine, topaz</field>
+    </record>
+
+    <record id="group_oranges" model="product.color.group">
+        <field name="name">Oranges</field>
+        <field name="color_code">#e65100</field>
+        <field name="sequence">8</field>
+        <field name="value_id" ref="attr_val_oranges"/>
+        <field name="color_terms">orange, bright orange, tangerine, burnt orange, neon orange, peach, coral, apricot, amber orange, pumpkin, rust, copper, terracotta, terra cotta, sienna, persimmon, papaya, mango, tiger orange, sunset orange, mandarin, satsuma, clementine, carrot, ginger, marmalade, fire orange, safety orange, hi-vis orange, fluorescent orange, nectarine, melon</field>
+    </record>
+
+    <record id="group_pinks" model="product.color.group">
+        <field name="name">Pinks</field>
+        <field name="color_code">#e91e90</field>
+        <field name="sequence">9</field>
+        <field name="value_id" ref="attr_val_pinks"/>
+        <field name="color_terms">pink, hot pink, fuchsia, candy pink, dusky pink, rose pink, baby pink, bubblegum pink, blush, salmon pink, flamingo, cerise, magenta, coral pink, carnation pink, watermelon, raspberry pink, neon pink, fluorescent pink, shell pink, pastel pink, light pink, deep pink, bright pink, rose gold, ballet pink, powder pink, dusty rose, old rose, tea rose, petal pink, orchid pink, strawberry, rouge pink, punch pink</field>
+    </record>
+
+    <record id="group_purples" model="product.color.group">
+        <field name="name">Purples</field>
+        <field name="color_code">#7b1fa2</field>
+        <field name="sequence">10</field>
+        <field name="value_id" ref="attr_val_purples"/>
+        <field name="color_terms">purple, violet, lavender, plum, lilac, aubergine, mauve, grape, eggplant, amethyst, indigo, mulberry, heather, orchid, wisteria, boysenberry, iris, royal purple, deep purple, dark purple, light purple, bright purple, pastel purple, berry purple, wine purple, damson, byzantium, periwinkle purple, thistle, fig, raisin, pansy</field>
+    </record>
+
+    <record id="group_browns" model="product.color.group">
+        <field name="name">Browns</field>
+        <field name="color_code">#6d4c41</field>
+        <field name="sequence">11</field>
+        <field name="value_id" ref="attr_val_browns"/>
+        <field name="color_terms">brown, dark brown, light brown, chocolate, tan, camel, beige, taupe, khaki, sand, coffee, mocha, chestnut, walnut, hazel, toffee, caramel, cocoa, espresso, bronze, umber, sepia, mahogany, cinnamon, nutmeg, biscuit, fawn, deer, cognac, saddle brown, tobacco, earth brown, clay, truffle, bark, timber, driftwood, oatmeal, mushroom, peanut, almond, cedar</field>
+    </record>
+
+    <record id="group_multi" model="product.color.group">
+        <field name="name">Multi-Colour</field>
+        <field name="color_code">#ff6f00</field>
+        <field name="sequence">12</field>
+        <field name="value_id" ref="attr_val_multi"/>
+        <field name="color_terms">multi, multicolour, multicolor, multi-colour, multi-color, rainbow, tie dye, tie-dye, camo, camouflage, pattern, patterned, print, printed, striped, check, checked, plaid, tartan, floral, tropical, abstract, mixed, assorted, marble, ombre, gradient, two-tone, two tone, tri-colour, tri-color, colour block, color block, colourblock, colorblock, variegated, speckled, mottled, heathered, space dye, space-dye, jacquard, ikat, paisley</field>
+    </record>
+
+</odoo>
