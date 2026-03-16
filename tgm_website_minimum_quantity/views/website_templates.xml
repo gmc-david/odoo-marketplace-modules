@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="tgm_shop_product_quantity" inherit_id="website_sale.product_quantity">
+        <xpath expr="//input[@name='add_qty']" position="replace">
+            <t t-if="request.website.tgm_min_qty_enabled">
+                <input type="text" class="form-control quantity text-center"
+                    data-min="1"
+                    name="add_qty"
+                    t-att-value="product.tgm_minimum_qty or 1"
+                    t-att-data-setqty="product.tgm_minimum_qty or 1"
+                    t-att-data-min="product.tgm_minimum_qty"/>
+            </t>
+            <t t-else="">
+                <input type="text" class="form-control quantity text-center"
+                    data-min="1"
+                    name="add_qty"
+                    t-att-value="add_qty or 1"/>
+            </t>
+        </xpath>
+    </template>
+</odoo>

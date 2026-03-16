@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Search redirect is handled via controller and JS — no template overrides needed -->
+</odoo>

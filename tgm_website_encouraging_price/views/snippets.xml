@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="snippet_options" inherit_id="website_sale.snippet_options">
+        <xpath expr="//we-checkbox[@data-name='o_wsale_accordion_item']" position="before">
+            <we-checkbox string="Encouraging Price"
+                data-customize-website-views="tgm_website_encouraging_price.encouraging_temp"
+                data-name="o_wsale_encouraging_price_view"
+                data-no-preview="true"
+                data-reload="/"/>
+        </xpath>
+    </template>
+</odoo>

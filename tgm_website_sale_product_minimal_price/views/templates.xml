@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="minimal_product_price" inherit_id="website_sale.product_price">
+        <xpath expr="//span[hasclass('oe_price')]" position="after">
+            <span id="product_page_price" t-if="combination_info['min'] != 0.0" class="oe_price d-none" style="white-space: nowrap; font-size: 1.5rem;">from
+                <span id="product_min_price" t-out="combination_info['min']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"></span>
+                <span>to</span>
+                <span id="product_max_price" t-out="combination_info['max']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"></span>
+            </span>
+        </xpath>
+        <xpath expr="//span[hasclass('oe_price')]" position="attributes">
+            <attribute name="class">oe_price d-none</attribute>
+            <attribute name="id">oe_price_main</attribute>
+        </xpath>
+    </template>
+    <template id="minimal_product" inherit_id="website_sale.product">
+        <xpath expr="//t[@t-set='hasQuantities']" position="before">
+            <t t-if="combination_info['min'] != 0.0">
+                <div id="product_qty_price_container" t-attf-class="me-5 mb-2 fs-4 fw-semibold d-flex flex-column {{'d-none' if combination_info['is_combination_possible'] else ''}}">
+                    <span class="fs-6">Qty Price</span>
+                    <span id="product_qty_price" t-out="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                </div>
+            </t>
+        </xpath>
+    </template>
+    <template id="minimal_product_item" inherit_id="website_sale.products_item">
+        <xpath expr="//form//div[hasclass('product_price')]//span[@t-out]" position="replace">
+            <t t-set="price_tmp" t-value="product_min_max_prices.get(product)"/>
+            <span class="h6 mb-0" t-if="price_tmp and price_tmp['min_price'] and price_tmp['max_price'] and price_tmp['min_price'] != price_tmp['max_price']">from
+                <span t-out="price_tmp['min_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"></span>
+                <span>to</span>
+                <span t-out="price_tmp['max_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"></span>
+            </span>
+            <span class="h6 mb-0" t-elif="template_price_vals['price_reduce'] or not website.prevent_zero_price_sale" t-out="template_price_vals['price_reduce']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+        </xpath>
+    </template>
+</odoo>
