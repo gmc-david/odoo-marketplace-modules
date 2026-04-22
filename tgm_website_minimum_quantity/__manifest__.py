@@ -28,7 +28,7 @@ Perfect for wholesale, B2B, and any store where minimum order quantities apply.
     "author": "The Great Merch Developers",
     "website": "https://thegreatmerch.com",
     "support": "hello@thegreatmerch.com",
-    "price": 9.99,
+    "price": 4.99,
     "currency": "EUR",
     "license": "LGPL-3",
     "images": [
