@@ -40,7 +40,7 @@ marketplace where colour naming is inconsistent.
     "author": "The Great Merch Developers",
     "website": "https://thegreatmerch.com",
     "support": "hello@thegreatmerch.com",
-    "price": 49.99,
+    "price": 9.99,
     "currency": "EUR",
     "license": "LGPL-3",
     "images": [

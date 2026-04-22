@@ -28,7 +28,7 @@ Perfect for any Odoo eCommerce store that wants a better search experience.
     "author": "The Great Merch Developers",
     "website": "https://thegreatmerch.com",
     "support": "hello@thegreatmerch.com",
-    "price": 14.99,
+    "price": 4.99,
     "currency": "EUR",
     "license": "LGPL-3",
     "images": [
