@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="menu_tgm_flipbook_root"
+        name="Flipbooks"
+        parent="website.menu_website_configuration"
+        sequence="95"/>
+
+    <menuitem
+        id="menu_tgm_flipbook_list"
+        name="Flipbooks"
+        parent="menu_tgm_flipbook_root"
+        action="action_tgm_flipbook"
+        sequence="10"/>
+
+</odoo>

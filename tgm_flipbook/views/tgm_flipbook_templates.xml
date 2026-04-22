@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="flipbook_viewer_page" name="Flipbook Viewer">
+        <t t-call="website.layout">
+            <t t-set="additional_title" t-value="flipbook.name"/>
+            <div id="wrap" class="o_tgm_flipbook_wrap">
+                <div class="container-fluid py-4">
+                    <div class="text-center mb-3">
+                        <h1 t-esc="flipbook.name" class="o_tgm_flipbook_title"/>
+                        <div t-if="flipbook.description" t-field="flipbook.description" class="o_tgm_flipbook_description text-muted"/>
+                    </div>
+
+                    <div class="o_tgm_flipbook_toolbar text-center mb-2">
+                        <button type="button" class="btn btn-light btn-sm o_tgm_flipbook_prev" aria-label="Previous page">
+                            <i class="fa fa-chevron-left"/>
+                        </button>
+                        <span class="mx-3 o_tgm_flipbook_page_counter">
+                            <span class="o_tgm_flipbook_current">1</span> / <span class="o_tgm_flipbook_total">?</span>
+                        </span>
+                        <button type="button" class="btn btn-light btn-sm o_tgm_flipbook_next" aria-label="Next page">
+                            <i class="fa fa-chevron-right"/>
+                        </button>
+                        <button type="button" class="btn btn-light btn-sm ms-3 o_tgm_flipbook_fullscreen" aria-label="Fullscreen">
+                            <i class="fa fa-expand"/>
+                        </button>
+                    </div>
+
+                    <div class="o_tgm_flipbook_stage">
+                        <div class="o_tgm_flipbook_loading">
+                            <div class="spinner-border" role="status"/>
+                            <div class="mt-2">Loading catalogue…</div>
+                        </div>
+                        <div class="o_tgm_flipbook_container"
+                             t-att-data-pdf-url="'/flipbook/%s/file.pdf' % flipbook.slug"
+                             t-att-data-show-cover="'1' if flipbook.show_cover else '0'"/>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

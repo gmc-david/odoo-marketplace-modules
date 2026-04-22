@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>PDF Flipbook Catalogue for Odoo Website — Self-Hosted Digital Catalogues, Brochures & Magazines</title>
+
+<meta name="description" content="Host your own interactive PDF flipbooks on your Odoo website. Upload catalogues, brochures, menus and magazines — customers flip through pages with a realistic page-turn animation. No subscriptions, no external hosting, unlimited catalogues. Alternative to Issuu, FlippingBook, Yumpu and Publitas."/>
+
+<meta name="keywords" content="odoo flipbook, pdf flipbook, pdf viewer odoo, digital catalogue odoo, online catalogue, flipbook website, page flip, pdf catalogue, interactive pdf, digital brochure, ebook odoo, digital magazine, lookbook odoo, issuu alternative, flippingbook alternative, yumpu alternative, publitas alternative, pdf to flipbook, self hosted flipbook, odoo website flipbook, odoo 18 flipbook, pdf magazine, digital publishing odoo, online brochure, embed pdf odoo, website pdf viewer, restaurant menu odoo, retail catalogue odoo, product catalogue, page turn effect, html5 flipbook, pdf.js odoo"/>
+
+<meta name="author" content="The Great Merch Co"/>
+
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #2c3039;
+    line-height: 1.6;
+    background: #ffffff;
+  }
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Banner ---------- */
+  .banner {
+    position: relative;
+    background: linear-gradient(135deg, #1f2332 0%, #3a4258 60%, #5a6580 100%);
+    color: #ffffff;
+    padding: 72px 24px 96px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .banner::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 25% 40%, rgba(255,255,255,0.08), transparent 40%),
+                      radial-gradient(circle at 75% 60%, rgba(255,255,255,0.05), transparent 45%);
+  }
+  .banner-content { position: relative; max-width: 900px; margin: 0 auto; }
+  .banner h1 {
+    font-size: 2.6rem;
+    line-height: 1.15;
+    margin: 0 0 16px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .banner p.lead {
+    font-size: 1.2rem;
+    margin: 0 auto 28px;
+    max-width: 760px;
+    opacity: 0.92;
+  }
+  .banner .pill {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.22);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    margin: 4px;
+  }
+  /* Banner image placeholder — replace the <img src> once artwork is ready */
+  .banner-image-slot {
+    margin: 36px auto 0;
+    max-width: 1000px;
+    aspect-ratio: 2 / 1;
+    background: rgba(255,255,255,0.08);
+    border: 2px dashed rgba(255,255,255,0.35);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+  }
+  .banner-image-slot img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+    display: block;
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding: 72px 0; }
+  section.alt { background: #f8f7f3; }
+
+  h2 {
+    font-size: 2rem;
+    margin: 0 0 16px;
+    text-align: center;
+    font-weight: 700;
+    color: #1f2332;
+  }
+  h3 {
+    font-size: 1.2rem;
+    margin: 0 0 10px;
+    color: #1f2332;
+  }
+  .section-lead {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #5a6175;
+    max-width: 780px;
+    margin: 0 auto 48px;
+  }
+
+  /* ---------- Features grid ---------- */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+  }
+  .feature {
+    background: #ffffff;
+    border: 1px solid #ecebe5;
+    border-radius: 10px;
+    padding: 24px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .feature:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  }
+  .feature .icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: #eef1fb;
+    color: #3a4258;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .feature p { margin: 0; color: #5a6175; }
+
+  /* ---------- Screenshot placeholders ---------- */
+  .screens {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+  }
+  .screen-slot {
+    aspect-ratio: 16 / 10;
+    background: #ffffff;
+    border: 2px dashed #c7c9d0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8a90a0;
+    font-size: 0.95rem;
+    text-align: center;
+    padding: 12px;
+  }
+  .screen-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+  }
+  .screen-caption {
+    text-align: center;
+    color: #5a6175;
+    font-size: 0.9rem;
+    margin-top: 8px;
+  }
+
+  /* ---------- Use cases ---------- */
+  .uses {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .use {
+    background: #ffffff;
+    border-left: 4px solid #3a4258;
+    padding: 14px 18px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #2c3039;
+  }
+
+  /* ---------- Comparison ---------- */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .compare > div {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 28px;
+    border: 1px solid #ecebe5;
+  }
+  .compare h3 { text-align: center; }
+  .compare ul { padding-left: 20px; color: #5a6175; }
+  .compare .them { opacity: 0.75; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: #1f2332;
+    color: #cfd2db;
+    padding: 48px 24px;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  footer a { color: #ffffff; text-decoration: none; }
+
+  @media (max-width: 700px) {
+    .banner h1 { font-size: 1.9rem; }
+    .banner p.lead { font-size: 1rem; }
+    .compare { grid-template-columns: 1fr; }
+    section { padding: 52px 0; }
+    h2 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- BANNER — replace the <img src> below with banner.png once ready -->
+<!-- ============================================================ -->
+<header class="banner">
+  <div class="banner-content">
+    <h1>PDF Flipbook Catalogue for Your Odoo Website</h1>
+    <p class="lead">
+      Host your own interactive digital catalogues, brochures, magazines and menus — right on your Odoo website.
+      Customers flick through pages with a realistic page-flip animation. No subscriptions. No third-party hosting. Unlimited catalogues.
+    </p>
+    <div>
+      <span class="pill">Self-hosted</span>
+      <span class="pill">Unlimited catalogues</span>
+      <span class="pill">Mobile-friendly</span>
+      <span class="pill">SEO-ready URLs</span>
+      <span class="pill">Odoo 18</span>
+    </div>
+
+    <!-- Replace this slot with: <img src="banner.png" alt="PDF Flipbook banner"/> -->
+    <div class="banner-image-slot">
+      <img src="banner.png" alt="PDF Flipbook for Odoo — banner" onerror="this.style.display='none'; this.parentNode.innerHTML='[ Banner image goes here — 1000 × 500 px, file: banner.png ]';"/>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- OVERVIEW -->
+<!-- ============================================================ -->
+<section>
+  <div class="container">
+    <h2>Turn any PDF into a beautiful online catalogue</h2>
+    <p class="section-lead">
+      Upload a PDF, give it a URL slug, hit publish — your customers can now flip through your
+      catalogue on your own website, on any device. No more sending them to Issuu, FlippingBook,
+      Yumpu or Publitas. No more monthly fees. Your brand, your domain, your data.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SCREENSHOTS — replace each .screen-slot with an <img> -->
+<!-- ============================================================ -->
+<section class="alt">
+  <div class="container">
+    <h2>See it in action</h2>
+    <p class="section-lead">Desktop, tablet and mobile — pages always look crisp thanks to on-demand vector rendering.</p>
+
+    <div class="screens">
+      <!-- Screenshot 1 -->
+      <div>
+        <div class="screen-slot">
+          <img src="screenshot_1.png" alt="Flipbook viewer on desktop" onerror="this.style.display='none'; this.parentNode.innerHTML='[ Screenshot 1 — Flipbook viewer on desktop. File: screenshot_1.png ]';"/>
+        </div>
+        <p class="screen-caption">Desktop viewer — two-page spread with realistic flip animation</p>
+      </div>
+
+      <!-- Screenshot 2 -->
+      <div>
+        <div class="screen-slot">
+          <img src="screenshot_2.png" alt="Flipbook admin — upload PDF" onerror="this.style.display='none'; this.parentNode.innerHTML='[ Screenshot 2 — Admin upload page with progress bar. File: screenshot_2.png ]';"/>
+        </div>
+        <p class="screen-caption">Admin upload with chunked streaming for large PDFs</p>
+      </div>
+
+      <!-- Screenshot 3 -->
+      <div>
+        <div class="screen-slot">
+          <img src="screenshot_3.png" alt="Flipbook on mobile" onerror="this.style.display='none'; this.parentNode.innerHTML='[ Screenshot 3 — Mobile / tablet view. File: screenshot_3.png ]';"/>
+        </div>
+        <p class="screen-caption">Responsive single-page mode on phones and tablets</p>
+      </div>
+
+      <!-- Screenshot 4 -->
+      <div>
+        <div class="screen-slot">
+          <img src="screenshot_4.png" alt="Flipbook list view in Odoo backend" onerror="this.style.display='none'; this.parentNode.innerHTML='[ Screenshot 4 — Backend list of catalogues. File: screenshot_4.png ]';"/>
+        </div>
+        <p class="screen-caption">Manage unlimited catalogues from the Odoo backend</p>
+      </div>
+
+      <!-- Screenshot 5 -->
+      <div>
+        <div class="screen-slot">
+          <img src="screenshot_5.png" alt="Flipbook form view" onerror="this.style.display='none'; this.parentNode.innerHTML='[ Screenshot 5 — Flipbook form view with slug and publish toggle. File: screenshot_5.png ]';"/>
+        </div>
+        <p class="screen-caption">Per-catalogue settings: URL slug, cover page, publish toggle</p>
+      </div>
+
+      <!-- Screenshot 6 -->
+      <div>
+        <div class="screen-slot">
+          <img src="screenshot_6.png" alt="Fullscreen flipbook view" onerror="this.style.display='none'; this.parentNode.innerHTML='[ Screenshot 6 — Fullscreen reading mode. File: screenshot_6.png ]';"/>
+        </div>
+        <p class="screen-caption">Fullscreen reading mode for an immersive experience</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- KEY FEATURES -->
+<!-- ============================================================ -->
+<section>
+  <div class="container">
+    <h2>Everything you need to publish PDF catalogues online</h2>
+    <p class="section-lead">Built for Odoo 18, designed for speed, SEO and a delightful reading experience.</p>
+
+    <div class="features">
+      <div class="feature">
+        <div class="icon">&#128213;</div>
+        <h3>Realistic Page-Flip Animation</h3>
+        <p>Powered by StPageFlip — smooth, natural page turns with shadows and curl effects. Not just a boring PDF scroll.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#128269;</div>
+        <h3>Always Crisp Pages</h3>
+        <p>Pages rendered live via PDF.js from vector data. No pre-baked JPEGs, no pixelation — sharp at any zoom, any screen density.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#128241;</div>
+        <h3>Mobile & Tablet Ready</h3>
+        <p>Fully responsive. Single-page portrait mode on phones, two-page spreads on desktops. Touch, swipe, keyboard and mouse all supported.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#127760;</div>
+        <h3>SEO-Friendly URLs</h3>
+        <p>Each catalogue has a clean, shareable URL (/flipbook/your-slug). Indexed by search engines, works in sitemaps.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#128190;</div>
+        <h3>Chunked PDF Upload</h3>
+        <p>Upload PDFs up to 2 GiB via a streaming admin page with a progress bar. No more browser freezes on big catalogues.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#128737;</div>
+        <h3>Unlimited Catalogues</h3>
+        <p>Publish as many flipbooks as you like — seasonal catalogues, regional brochures, multilingual editions. One flat fee, no limits.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#128736;</div>
+        <h3>Simple Admin</h3>
+        <p>Odoo-native backend. Create a record, set a slug, upload the PDF, toggle publish. That's it.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#9211;</div>
+        <h3>Fullscreen Mode</h3>
+        <p>One-click fullscreen for an immersive, distraction-free reading experience — great for product lookbooks.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#128274;</div>
+        <h3>Publish Control</h3>
+        <p>Each catalogue has an independent publish toggle — draft catalogues stay private until you're ready to launch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- USE CASES -->
+<!-- ============================================================ -->
+<section class="alt">
+  <div class="container">
+    <h2>Perfect for any business with a catalogue</h2>
+    <p class="section-lead">If it prints, it flips. Common use cases include:</p>
+    <div class="uses">
+      <div class="use">Retail catalogues</div>
+      <div class="use">Lookbooks &amp; fashion</div>
+      <div class="use">Restaurant menus</div>
+      <div class="use">Wine lists</div>
+      <div class="use">Sales brochures</div>
+      <div class="use">Product data sheets</div>
+      <div class="use">Magazines</div>
+      <div class="use">Newsletters</div>
+      <div class="use">Price lists</div>
+      <div class="use">Annual reports</div>
+      <div class="use">Real estate portfolios</div>
+      <div class="use">Training manuals</div>
+      <div class="use">Event programmes</div>
+      <div class="use">Wedding portfolios</div>
+      <div class="use">Art &amp; photography portfolios</div>
+      <div class="use">School &amp; university prospectuses</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- VS SAAS -->
+<!-- ============================================================ -->
+<section>
+  <div class="container">
+    <h2>Stop paying SaaS flipbook hosts</h2>
+    <p class="section-lead">
+      A smart alternative to Issuu, FlippingBook, Yumpu, Publitas and similar services.
+      Pay once, own it forever, host it on your own Odoo site.
+    </p>
+
+    <div class="compare">
+      <div>
+        <h3>This module</h3>
+        <ul>
+          <li>One-off purchase — no recurring fees</li>
+          <li>Unlimited flipbooks, unlimited page views</li>
+          <li>Your Odoo domain — great for SEO</li>
+          <li>No ads, ever</li>
+          <li>PDFs stay on your server</li>
+          <li>Fully customisable (open code under OPL-1)</li>
+        </ul>
+      </div>
+      <div class="them">
+        <h3>Typical SaaS flipbook services</h3>
+        <ul>
+          <li>Monthly or yearly subscription</li>
+          <li>Limits on publications, views or bandwidth</li>
+          <li>Hosted on their domain or iframe'd in</li>
+          <li>May show branding or ads on free plans</li>
+          <li>Your PDFs stored on their servers</li>
+          <li>Closed source, limited styling</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- HOW IT WORKS -->
+<!-- ============================================================ -->
+<section class="alt">
+  <div class="container">
+    <h2>Up and running in under 2 minutes</h2>
+    <p class="section-lead">
+      1. Install the module. 2. Create a Flipbook record with a title and URL slug. 3. Upload your PDF.
+      4. Toggle Publish. Your catalogue is live at <code>/flipbook/your-slug</code>.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer>
+  <p>
+    <strong>PDF Flipbook Catalogue for Website</strong> &middot; by
+    <a href="https://thegreatmerch.com">The Great Merch Developers</a>
+  </p>
+  <p>
+    Odoo 18 &middot; License: OPL-1 &middot; Support: development@thegreatmerch.com
+  </p>
+</footer>
+
+</body>
+</html>
