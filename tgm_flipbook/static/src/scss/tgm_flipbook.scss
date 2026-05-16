@@ -1,0 +1,104 @@
+.o_tgm_flipbook_wrap {
+    background: linear-gradient(180deg, #f6f5f1 0%, #e9e6df 100%);
+    min-height: calc(100vh - 120px);
+    // StPageFlip parks "hard" page wrappers (cover/back) as absolutely-
+    // positioned siblings. In its 2D `--simple` fallback they occasionally
+    // land below the stage and render as a white rectangle above the
+    // footer. Clip overflow at wrap level — the drop-shadow on the book
+    // itself sits well inside, so nothing visible is lost.
+    overflow: hidden;
+
+    .o_tgm_flipbook_title {
+        font-weight: normal;
+        letter-spacing: 0.5px;
+        font-size: 1.7rem;
+    }
+
+    @media (min-width: 900px) {
+        .o_tgm_flipbook_title {
+            font-size: 2.7rem;
+        }
+    }
+
+    .o_tgm_flipbook_toolbar {
+        .btn {
+            border-radius: 999px;
+            width: 38px;
+            height: 38px;
+            padding: 0;
+            line-height: 38px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+        .o_tgm_flipbook_page_counter {
+            font-variant-numeric: tabular-nums;
+            color: #555;
+        }
+    }
+
+    .o_tgm_flipbook_stage {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: calc(100vh - 240px);
+        min-height: 520px;
+        padding: 16px clamp(16px, 4vw, 64px);
+    }
+
+    .o_tgm_flipbook_loading {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+    }
+
+    .o_tgm_flipbook_container {
+        // Drop-shadow hugs the book outline thanks to the aspect-ratio rule.
+        filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.25));
+        height: 100%;
+        max-width: 100%;
+        margin-inline: auto;
+        aspect-ratio: var(--book-aspect-portrait, 0.75);
+        width: auto !important;
+    }
+
+    .o_tgm_page {
+        // Each StPageFlip HTML "page" is a block that holds the <canvas>
+        // PDF.js paints into. The canvas is sized to fill the page box via
+        // inline styles set by the widget (CSS px for layout, DPR-multiplied
+        // for the bitmap).
+        position: absolute;
+        background: #fff;
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    @media (min-width: 900px) {
+        .o_tgm_flipbook_container {
+            aspect-ratio: var(--book-aspect-landscape, 1.5);
+        }
+    }
+}
+
+.o_tgm_flipbook_wrap:fullscreen,
+.o_tgm_flipbook_wrap:-webkit-full-screen {
+    background: #1a1a1a;
+    color: #eee;
+    padding-top: 20px;
+    // Belt-and-braces: browsers sometimes treat `:fullscreen` as a fresh
+    // stacking context and ignore the wrap-level overflow rule.
+    overflow: hidden;
+
+    .o_tgm_flipbook_title,
+    .o_tgm_flipbook_description,
+    .o_tgm_flipbook_page_counter {
+        color: #eee;
+    }
+}
